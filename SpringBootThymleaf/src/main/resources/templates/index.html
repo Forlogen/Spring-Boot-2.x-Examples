@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h2 th:text="${count}">20</h2>
+
+    <table th:object="${person}">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td th:text="*{id}">20</td>
+            <td th:text="*{name}">Hello</td>
+        </tr>
+    </table>
+
+    <hr>
+    <br>
+    <br>
+
+    <table >
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td th:text="${person.id}">20</td>
+            <td th:text="${person.name}">Hello</td>
+        </tr>
+    </table>
+    <hr>
+
+    <table>
+        <tr>
+            <th th:text="#{index.address}"></th>
+            <th th:text="#{index.language}"></th>
+        </tr>
+    </table>
+
+    <hr>
+
+    <span>
+        <p th:text="'person id is:'  + ${person.id} + ', person name is: ' + ${person.name}">person desc</p>
+        <p th:text="|person id is: ${person.id}, person name is:  ${person.name}|"></p>
+    </span>
+    <hr>
+
+    <h2 th:text="${person.id}" th:if="${person.id > 5}"></h2>
+    <h3 th:text="${person1.id}" th:unless="${person1.id > 5}"></h3>
+    <hr>
+
+    <table th:fragment="personList" th:each="person, iterStat  : ${persons}">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td th:text="${person.id}">20</td>
+            <td th:text="${person.name}">Hello</td>
+            <td th:text="${iterStat}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
